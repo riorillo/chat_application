@@ -4,4 +4,22 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+html body {
+  height: 100%;
+}
+html body #root {
+  background-color: #1976d2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.Mui-focusVisible {
+  background-color: whitesmoke;
+}
+
 /*# sourceMappingURL=index.css.map */
