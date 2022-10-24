@@ -1,16 +1,18 @@
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import { NavbarStyle } from "./style";
 import SearchBar from "./SearchBar";
 import NewChatButton from "./NewChatButton";
 import LogoutButton from "./LogoutButton";
+import { ConversationData } from "../../../../firebase/data_types";
 
-const Navbar: React.FC<{onSearchBarChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void, searchBarValue: string}> = ({onSearchBarChange, searchBarValue}) => {
+const Navbar: React.FC<{
+  onSearchBarChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void;
+  searchBarValue: string;
+  conversations: ConversationData[];
+}> = ({ onSearchBarChange, searchBarValue, conversations}) => {
   const { box } = NavbarStyle;
 
   return (
@@ -27,8 +29,8 @@ const Navbar: React.FC<{onSearchBarChange: (event: React.ChangeEvent<HTMLTextAre
       </Toolbar>
 
       <Toolbar sx={{ gap: "16px" }}>
-        <SearchBar onChange={onSearchBarChange} value={searchBarValue}/>
-        <NewChatButton />
+        <SearchBar onChange={onSearchBarChange} value={searchBarValue} />
+        <NewChatButton conversations={conversations}/>
       </Toolbar>
     </AppBar>
   );

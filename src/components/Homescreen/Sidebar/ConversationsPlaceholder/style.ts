@@ -9,5 +9,4 @@ export const ConversationsPlaceholderStyle = {
     opacity: 0.7,
   },
   text: { margin: 0, textAlign: "center", verticalAlign: "middle" },
-  
 };

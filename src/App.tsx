@@ -9,7 +9,7 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/homescreen" element={<Homescreen/>}></Route>
+          <Route path="/homescreen" element={<Homescreen />}></Route>
         </Routes>
       </AuthProvider>
     </>

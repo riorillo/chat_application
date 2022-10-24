@@ -10,5 +10,5 @@ export interface UserData {
   email: string;
   displayName: string;
   photoURL: string;
-  provider: string;
+  provider?: string;
 }

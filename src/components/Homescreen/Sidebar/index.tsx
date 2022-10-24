@@ -114,6 +114,7 @@ const Sidebar = () => {
       <Navbar
         onSearchBarChange={onSearchBarChange}
         searchBarValue={searchBarValue}
+        conversations={conversations}
       />
 
       {!loading && conversations.length === 0 && <ConversationPlaceholder />}

@@ -3,10 +3,10 @@ import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useAuth } from "../../../../../contexts/AuthContext";
 
 const LogoutButton = () => {
-  const {logOut} = useAuth();
+  const { logOut } = useAuth();
 
   return (
-    <Button onClick = {() => logOut()} sx={{ color: "white" }}>
+    <Button onClick={() => logOut()} sx={{ color: "white" }}>
       Logout &#160; <PowerSettingsNewIcon />
     </Button>
   );
