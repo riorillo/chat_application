@@ -1,15 +1,15 @@
+import { BorderRight } from "@mui/icons-material";
 import { Grid, useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Sidebar from "./Sidebar";
-import { HomescreenStyle } from "./style";
 
 const Homescreen = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { palette } = useTheme();
-  const { container, outlet } = HomescreenStyle;
+  const theme = useTheme();
 
   useEffect(() => {
     !user && navigate("/");
@@ -17,7 +17,7 @@ const Homescreen = () => {
 
   return (
     user && (
-      <Grid container sx={container}>
+      <Grid container sx={{height: '100%', backgroundColor: theme.palette.primary.main}}>
         <Grid
           item
           xs={4}
@@ -25,11 +25,13 @@ const Homescreen = () => {
             overflowY: "scroll",
             height: "100%",
             backgroundColor: palette.primary.main,
+            zIndex: '2',
+            borderRight: `1px solid rgba(255, 255, 255, 0.25)`
           }}
         >
           <Sidebar />
         </Grid>
-        <Grid item xs={8} sx={outlet}>
+        <Grid item xs={8} sx={{backgroundColor: theme.palette.primary.dark}}>
           <Outlet />
         </Grid>
       </Grid>

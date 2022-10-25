@@ -1,14 +1,6 @@
 import { Box } from "@mui/material";
 import { UserCredential } from "firebase/auth";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import { db } from "../../../firebase";
@@ -20,19 +12,14 @@ import Navbar from "./Navbar";
 const Sidebar = () => {
   const { user } = useAuth() as UserCredential;
   const [conversations, setConversations] = useState<ConversationData[]>([]);
-  const [listedConversations, setListedConversations] = useState<
-    ConversationData[]
-  >([]);
+  const [listedConversations, setListedConversations] = useState<ConversationData[]>([]);
   const [searchBarValue, setSearchBarValue] = useState("");
   const [chatList, setChatList] = useState<UserData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const conversationsRef = collection(db, "conversations");
-    const q = query(
-      conversationsRef,
-      where("members", "array-contains", user.uid)
-    );
+    const q = query(conversationsRef, where("members", "array-contains", user.uid));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const allConversations = snapshot.docs.map(
@@ -70,9 +57,7 @@ const Sidebar = () => {
     if (conversations.length !== 0) {
       conversations
         .map((conversation) => conversation.members)
-        .forEach((members) =>
-          members.forEach((member) => uidList.push(member))
-        );
+        .forEach((members) => members.forEach((member) => uidList.push(member)));
 
       getUserList();
     }
@@ -83,17 +68,14 @@ const Sidebar = () => {
       const filteredUidList: string[] = chatList
         .filter(
           (item: UserData) =>
-            item.displayName
-              .toLocaleUpperCase()
-              .indexOf(searchBarValue.toLocaleUpperCase()) !== -1
+            item.displayName.toLocaleUpperCase().indexOf(searchBarValue.toLocaleUpperCase()) !== -1
         )
         .map((item: UserData) => item.id);
 
       setListedConversations(
         conversations.filter((conversation) =>
           filteredUidList.some(
-            (uid: string) =>
-              uid === conversation.members[0] || uid === conversation.members[1]
+            (uid: string) => uid === conversation.members[0] || uid === conversation.members[1]
           )
         )
       );
@@ -103,9 +85,7 @@ const Sidebar = () => {
     }
   }, [searchBarValue]);
 
-  const onSearchBarChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
+  const onSearchBarChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setSearchBarValue(event.target.value);
   };
 

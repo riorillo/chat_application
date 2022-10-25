@@ -3,9 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { SearchBarStyle } from "./style";
 
 const SearchBar: React.FC<{
-  onChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
   value: string;
 }> = ({ onChange, value }) => {
   const { bar } = SearchBarStyle;

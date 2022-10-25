@@ -21,4 +21,11 @@ export const ConversationStyle = {
     justifyContent: "space-between",
     alignItems: "center",
   },
+  textContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "8px",
+  }
 };

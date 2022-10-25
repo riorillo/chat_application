@@ -7,12 +7,10 @@ import LogoutButton from "./LogoutButton";
 import { ConversationData } from "../../../../firebase/data_types";
 
 const Navbar: React.FC<{
-  onSearchBarChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
+  onSearchBarChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
   searchBarValue: string;
   conversations: ConversationData[];
-}> = ({ onSearchBarChange, searchBarValue, conversations}) => {
+}> = ({ onSearchBarChange, searchBarValue, conversations }) => {
   const { box } = NavbarStyle;
 
   return (
@@ -30,7 +28,7 @@ const Navbar: React.FC<{
 
       <Toolbar sx={{ gap: "16px" }}>
         <SearchBar onChange={onSearchBarChange} value={searchBarValue} />
-        <NewChatButton conversations={conversations}/>
+        <NewChatButton conversations={conversations} />
       </Toolbar>
     </AppBar>
   );

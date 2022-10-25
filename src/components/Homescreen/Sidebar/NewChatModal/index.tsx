@@ -1,11 +1,4 @@
-import {
-  Modal,
-  Box,
-  Typography,
-  useTheme,
-  InputBase,
-  Button,
-} from "@mui/material";
+import { Modal, Box, Typography, useTheme, InputBase, Button } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import { NewChatModalStyle } from "./style";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -22,14 +15,8 @@ export const NewChatModal: React.FC<{
   conversations: ConversationData[];
 }> = ({ status, handleClose, conversations }) => {
   const theme = useTheme();
-  const {
-    modal,
-    inputContainer,
-    input,
-    loadingCircle,
-    personAddIcon,
-    statusMessage,
-  } = NewChatModalStyle;
+  const { modal, inputContainer, input, loadingCircle, personAddIcon, statusMessage } =
+    NewChatModalStyle;
   const [loading, setLoading] = useState(false);
   const [alreadyExist, setAlreadyExist] = useState(false);
   const [error, setError] = useState<{ message: string } | null>(null);
@@ -45,26 +32,20 @@ export const NewChatModal: React.FC<{
 
     if (ref.current.value === user.email) {
       setError({ message: "Are you trying to chat with yourself? 🤔" });
-      setLoading(false)
-      return
+      setLoading(false);
+      return;
     }
 
-    let q = query(
-      collection(db, "users"),
-      where("email", "==", ref.current.value)
-    );
+    let q = query(collection(db, "users"), where("email", "==", ref.current.value));
 
     const friendDoc = await getDocs(q);
-    const friend = friendDoc.docs.map(
-      (doc) => ({ id: doc.id, ...doc.data() } as UserData)
-    )[0];
+    const friend = friendDoc.docs.map((doc) => ({ id: doc.id, ...doc.data() } as UserData))[0];
 
     //Controlla se l'utente cercato è registrato;
     if (friend) {
       const activeConversation = conversations.filter((item) =>
         item.members.some((item) => item === friend.id)
       );
-
       //Controlla che non siano già presenti conversazioni con l'utente cercato;
       if (activeConversation.length === 0) {
         await addDoc(collection(db, "conversations"), {
@@ -79,15 +60,15 @@ export const NewChatModal: React.FC<{
             message: `You've started a chat with ${friend.displayName}!`,
           });
         }, 1000);
-      } else {
         //Notifica l'esistenza di una conversazione;
+      } else {
         setTimeout(() => {
           setLoading(false);
           setAlreadyExist(true);
         }, 1000);
       }
-    } else {
       // Notifica un errore;
+    } else {
       setTimeout(() => {
         setLoading(false);
         setError({ message: `Can't find any user for "${ref.current.value}"` });
@@ -131,7 +112,7 @@ export const NewChatModal: React.FC<{
                   startChat();
                 }}
                 sx={{
-                  color: `${theme.palette.primary.main}`,
+                  color: "background.main",
                   ...personAddIcon,
                 }}
               >
@@ -144,8 +125,8 @@ export const NewChatModal: React.FC<{
             <Box
               sx={{
                 ...statusMessage,
-                backgroundColor: "rgba(255, 165, 0, 0.60)",
-                border: "2px solid orange",
+                backgroundColor: "rgba(237, 108, 2, 0.60)",
+                border: "2px solid #ed6c02",
               }}
             >
               <Typography>This chat already exists</Typography>
@@ -156,8 +137,8 @@ export const NewChatModal: React.FC<{
             <Box
               sx={{
                 ...statusMessage,
-                backgroundColor: "rgba(255, 0, 0, 0.60)",
-                border: "2px solid red",
+                backgroundColor: "rgba(239, 83, 80, 0.60)",
+                border: "2px solid #d32f2f",
               }}
             >
               <Typography>{error.message}</Typography>
@@ -168,8 +149,8 @@ export const NewChatModal: React.FC<{
             <Box
               sx={{
                 ...statusMessage,
-                backgroundColor: "rgba(124, 252, 0, 0.40)",
-                border: "2px solid green",
+                backgroundColor: "rgba(76, 175, 80, 0.40)",
+                border: "2px solid #2e7d32",
               }}
             >
               <Typography>{success.message}</Typography>
