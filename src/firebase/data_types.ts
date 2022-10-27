@@ -12,3 +12,10 @@ export interface UserData {
   photoURL: string;
   provider?: string;
 }
+
+export interface MessageData {
+  id: string,
+  sent_by: string,
+  sent_at: string,
+  content: string,
+}

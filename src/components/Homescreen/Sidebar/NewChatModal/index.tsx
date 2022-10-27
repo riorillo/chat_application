@@ -1,4 +1,4 @@
-import { Modal, Box, Typography, useTheme, InputBase, Button } from "@mui/material";
+import { Modal, Box, Typography, InputBase, Button } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import { NewChatModalStyle } from "./style";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -14,7 +14,6 @@ export const NewChatModal: React.FC<{
   handleClose: () => void;
   conversations: ConversationData[];
 }> = ({ status, handleClose, conversations }) => {
-  const theme = useTheme();
   const { modal, inputContainer, input, loadingCircle, personAddIcon, statusMessage } =
     NewChatModalStyle;
   const [loading, setLoading] = useState(false);
@@ -84,7 +83,7 @@ export const NewChatModal: React.FC<{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={{ ...modal, bgcolor: theme.palette.primary.main }}>
+        <Box sx={{ ...modal, bgcolor: "primary.main" }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Start a chat

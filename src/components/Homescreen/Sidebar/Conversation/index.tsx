@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import { doc, DocumentData, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -11,7 +11,6 @@ const Conversation: React.FC<{
   conversation: ConversationData;
 }> = ({ conversation }) => {
   const { members, last_message } = conversation;
-  const theme = useTheme();
   const { user } = useAuth();
   const { container, content, propic, textContent, textContainer } = ConversationStyle;
   const [username, setUsername] = useState();
@@ -59,20 +58,19 @@ const Conversation: React.FC<{
               <Box sx={textContent}>
                 <Typography variant="h5" color="#FFFFFF" sx={{ lineHeight: "26px" }}>
                   {username} <br />{" "}
-                  <span style={{ fontSize: "16px", opacity: "0.50" }}>{email}</span>
+                  <span style={{ fontSize: "1rem", opacity: "0.50" }}>{email}</span>
                 </Typography>
 
                 {last_message && (
-                  <Typography variant="h6" color="#FFFFFF">
-                    {last_message?.sent_at}
+                  <Typography paragraph color="#FFFFFF">
+                    {new Date(last_message?.sent_at).toDateString().substring(3, 10)} -{" "}
+                    {new Date(last_message?.sent_at).toTimeString().substring(0, 5)}
                   </Typography>
                 )}
               </Box>
 
               <Typography color="#FFFFFF" sx={{ lineHeight: "26px" }}>
-                {last_message
-                  ? last_message.content
-                  : "Send your first message in this conversation "}{" "}
+                {last_message ? last_message.content : "Send your first message "}{" "}
               </Typography>
             </Box>
           </Box>

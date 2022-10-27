@@ -10,12 +10,7 @@ const LoginButton: React.FC<{
 }> = ({ provider, variant, onClick }) => {
   return (
     <>
-      <Button
-        variant={variant}
-        size="large"
-        sx={{ textTransform: "none" }}
-        onClick={onClick}
-      >
+      <Button variant={variant} size="large" sx={{ textTransform: "none" }} onClick={onClick}>
         {provider === "GitHub" && <GitHub sx={{ mr: 2 }} />}
         {provider === "Google" && <GoogleIcon sx={{ mr: 2 }} />}
 

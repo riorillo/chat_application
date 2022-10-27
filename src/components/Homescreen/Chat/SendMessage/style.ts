@@ -1,6 +1,5 @@
 export const SendMessageStyle = {
   container: {
-    backgroundColor: "primary.main",
     height: "64px",
     position: "relative",
     zIndex: "1",
@@ -10,6 +9,7 @@ export const SendMessageStyle = {
     justifyContent: "center",
     padding: "0 32px",
     gap: "16px",
+    backgroundColor: "primary.main",
   },
   button: {
     color: "primary.main",
