@@ -3,8 +3,8 @@ import SendIcon from "@mui/icons-material/Send";
 import { SendMessageStyle } from "./style";
 import React, { useRef } from "react";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
-import { db } from "../../../../firebase";
-import { useAuth } from "../../../../contexts/AuthContext";
+import { db } from "../../../firebase";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const SendMessage: React.FC<{ id: string | unknown }> = ({ id }) => {
   const { container, button, input } = SendMessageStyle;

@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { useAuth } from "../../../../contexts/AuthContext";
-import { auth } from "../../../../firebase";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const Bubble: React.FC<any> = ({ sent_by, content, date }) => {
   const { user } = useAuth();

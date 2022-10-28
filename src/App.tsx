@@ -2,10 +2,10 @@ import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Homescreen from "./components/Homescreen";
-import Chat from "./components/Homescreen/Chat";
-import Login from "./components/Login";
+import Chat from "./components/Chat";
 import { AuthProvider } from "./contexts/AuthContext";
+import Homescreen from "./Pages/Homescreen";
+import Login from "./Pages/Login";
 
 const App = () => {
   const [deviceWidth, setDeviceWidth] = useState<number>(document.body.clientWidth);

@@ -2,7 +2,7 @@ import { Grid,} from "@mui/material";
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import Sidebar from "./Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 const Homescreen = () => {
   const { user } = useAuth();

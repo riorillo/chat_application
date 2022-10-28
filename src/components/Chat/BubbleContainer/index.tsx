@@ -1,8 +1,8 @@
 import { Box } from "@mui/system";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
-import { db } from "../../../../firebase";
-import { MessageData } from "../../../../firebase/data_types";
+import { db } from "../../../firebase";
+import { MessageData } from "../../../firebase/data_types";
 import Bubble from "../Bubble";
 import { BubbleContainerStyle } from "./style";
 

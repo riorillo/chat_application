@@ -1,6 +1,6 @@
 export const ChatStyle = {
   container: {
-    backgroundColor: "primary.dark",
+    backgroundColor: "#1258a8",
     height: "100%",
     display: "flex",
     flexDirection: "column",

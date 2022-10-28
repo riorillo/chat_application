@@ -4,7 +4,7 @@ import { NavbarStyle } from "./style";
 import SearchBar from "./SearchBar";
 import NewChatButton from "./NewChatButton";
 import LogoutButton from "./LogoutButton";
-import { ConversationData } from "../../../../firebase/data_types";
+import { ConversationData } from "../../../firebase/data_types";
 
 const Navbar: React.FC<{
   onSearchBarChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;

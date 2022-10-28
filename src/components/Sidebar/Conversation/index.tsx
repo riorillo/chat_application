@@ -2,9 +2,9 @@ import { Avatar, Box, Typography } from "@mui/material";
 import { doc, DocumentData, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../contexts/AuthContext";
-import { db } from "../../../../firebase";
-import { ConversationData } from "../../../../firebase/data_types";
+import { useAuth } from "../../../contexts/AuthContext";
+import { db } from "../../../firebase";
+import { ConversationData } from "../../../firebase/data_types";
 import { ConversationStyle } from "./style";
 
 const Conversation: React.FC<{

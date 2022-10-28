@@ -4,10 +4,10 @@ import { NewChatModalStyle } from "./style";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useRef, useState } from "react";
-import { useAuth } from "../../../../contexts/AuthContext";
-import { db } from "../../../../firebase";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import { ConversationData, UserData } from "../../../../firebase/data_types";
+import { ConversationData, UserData } from "../../../firebase/data_types";
+import { useAuth } from "../../../contexts/AuthContext";
+import { db } from "../../../firebase";
 
 export const NewChatModal: React.FC<{
   status: boolean;
